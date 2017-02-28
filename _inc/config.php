@@ -11,20 +11,23 @@ if( !session_id() ) @session_start();
 require_once 'vendor/autoload.php';
 
 
-// global variables
-$base_url = 'http://localhost:8888/todoapp';
+
+// Constants variables
+define( 'BASE_URL' , 'http://localhost:8888/blog');
+define( 'APP_PATH' , realpath( __DIR__ . '/../') );
 
 
-// connect to db
-$database = new medoo([
-	'database_type' => 'mysql',
-	'database_name' => 'todo',
-	'server'        => 'localhost',
-	'username'      => 'root',
-	'password'      => 'root',
-	'charset'       => 'utf8'
-]);
-
+// Connecting to database
+$config = [
+			'database' => [
+				'database_type' => 'mysql',
+				'database_name' => 'blog',
+				'server'        => 'localhost',
+				'username'      => 'root',
+				'password'      => 'root',
+				'charset'       => 'utf8'
+			]
+];
 
 // global functions
 require_once 'functions.php';
