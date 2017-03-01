@@ -1,4 +1,22 @@
-<?php include_once "_partials/header.php" ?>
+<?php
+
+	include_once '_inc/config.php';
+
+	$routes = [
+		'post',
+		'edit',
+		'delete',
+	];
+
+	if ( ! in_array( segment(1), $routes ) ) {
+
+		show_404();
+
+	}
+
+	include_once '_partials/header.php';
+
+?>
 
 	<div class="page-header">
 	  <h1 class="text-center">Blogger <small>Course project</small></h1>
@@ -13,4 +31,4 @@
 		</p>
 	</form>
 
-<?php include_once "_partials/footer.php" ?>
+<?php include_once '_partials/footer.php' ?>

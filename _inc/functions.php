@@ -114,6 +114,41 @@
 
 
 
+	/**
+	 * Get segments
+	 *
+	 * From a url like http://example.com/edit/1
+	 * it creates an array of URL segments [ edit, 1 ]
+	 *
+	 *
+	 * @return array
+	 */
+	function get_segments()
+	{
+
+		$current_url = 'http' .
+			( isset( $_SERVER[ 'HTTPS' ] ) && $_SERVER[ 'HTTPS' ] == 'on'  ? 's://' : '://') .
+			$_SERVER[ 'HTTP_HOST' ] . $_SERVER[ 'REQUEST_URI' ];
+
+		$path = str_replace( BASE_URL, '', trim( $current_url, '/' ) );
+		$path = trim( parse_url($path, PHP_URL_PATH), '/' );
+
+		$segments = explode( '/', $path );
+
+		return $segments;
+
+	}
+
+
+	function segment( $index )
+	{
+
+		$segments = get_segments();
+		return isset( $segments[ $index - 1 ] ) ? $segments[ $index - 1 ] : false;
+
+	}
+
+
 	function redirect( $page, $status_code = 302 )
 	{
 
