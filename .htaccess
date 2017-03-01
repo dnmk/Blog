@@ -13,3 +13,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrite all other URLs to index.php/
 RewriteRule .* index.php/$0 [PT,L]
+
+# s 
