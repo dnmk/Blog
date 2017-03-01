@@ -8,8 +8,8 @@
 
 	<title>Blog</title>
 
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href=" <?= asset('/css/bootstrap.min.css') ?>">
+	<link rel="stylesheet" href=" <?= asset('/css/main.css') ?>">
 
 	<script>
 		var baseURL = '<?php echo BASE_URL ?>';

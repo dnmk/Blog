@@ -13,8 +13,10 @@ require_once 'vendor/autoload.php';
 
 
 // Constants variables
-define( 'BASE_URL' , 'http://localhost:8888/blog');
+define( 'BASE_URL' , 'http://localhost:8888');
 define( 'APP_PATH' , realpath( __DIR__ . '/../') );
+//??? realpath = you can manipulate with location directory
+
 
 
 // Connecting to database

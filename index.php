@@ -13,10 +13,4 @@
 		</p>
 	</form>
 
-	<div class="col-sm-12">
-		<div class="embed-responsive embed-responsive-16by9">
-  		<iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=FM7MFYoylVs&index=4&list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG"></iframe>
-		</div>
-	</div>
-
 <?php include_once "_partials/footer.php" ?>

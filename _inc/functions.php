@@ -89,9 +89,33 @@
 	}
 
 
+
+
+	/**
+	 * Asset
+	 *
+	 * Creates absolute URL to asset file
+	 *
+	 * @param  string		$path		path to asset file
+	 * @param  string		$base		asset base url
+	 * @return string		absolute URL to asset file
+	 */
+	function asset( $path, $base = BASE_URL.'/assets/' )
+	{
+
+		//Removing slashes
+		$path = trim( $path, '/' );
+
+		// Testing if this is real URL
+		return filter_var($base.$path, FILTER_SANITIZE_URL);
+
+	}
+
+
+
+
 	function redirect( $page, $status_code = 302 )
 	{
-		global $base_url;
 
 		if ( $page === 'back' )
 		{
@@ -100,7 +124,7 @@
 		else
 		{
 			$page = ltrim($page, '/');
-			$location = "$base_url/$page";
+			$location = BASE_URL . "/$page";
 		}
 
 		header("Location: $location", true, $status_code);
