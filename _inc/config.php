@@ -22,12 +22,12 @@ define( 'APP_PATH' , realpath( __DIR__ . '/../') );
 // Connecting to database
 $config = [
 			'db' => [
-				'type' 				=> 	'mysql',
-				'name' 				=> 	'blog',
-				'server'      => 	'localhost',
-				'username'    => 	'root',
-				'password'    => 	'root',
-				'charset'     => 	'utf8'
+				'type'		=> 	'mysql',
+				'name'		=> 	'blog',
+				'server'      	=> 	'localhost',
+				'username'    	=> 	'root',
+				'password'    	=> 	'root',
+				'charset'     	=> 	'utf8'
 			]
 ];
 
