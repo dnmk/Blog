@@ -21,15 +21,29 @@ define( 'APP_PATH' , realpath( __DIR__ . '/../') );
 
 // Connecting to database
 $config = [
-			'database' => [
-				'database_type' => 'mysql',
-				'database_name' => 'blog',
-				'server'        => 'localhost',
-				'username'      => 'root',
-				'password'      => 'root',
-				'charset'       => 'utf8'
+			'db' => [
+				'type' 				=> 	'mysql',
+				'name' 				=> 	'blog',
+				'server'      => 	'localhost',
+				'username'    => 	'root',
+				'password'    => 	'root',
+				'charset'     => 	'utf8'
 			]
 ];
+
+$db = new PDO(
+
+	"{$config['db']['type']}:
+	host={$config['db']['server']};
+	dbname={$config['db']['name']};
+	charset={$config['db']['charset']}",
+	$config['db']['username'], $config['db']['password']
+
+);
+
+
+$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+$db->setAttribute( PDO::ATTR_EMULATE_PREPARES, false );
 
 // global functions
 require_once 'functions.php';
