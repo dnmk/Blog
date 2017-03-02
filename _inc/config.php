@@ -48,7 +48,7 @@ $db->setAttribute( PDO::ATTR_EMULATE_PREPARES, false );
 
 try {
 
-	$query = $db->query("SELECT * FROM posGdts");
+	$query = $db->query("SELECT * FROM posts");
 
 	echo "<pre>";
 	print_r( $query->fetchAll() );
