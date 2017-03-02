@@ -1,0 +1,8 @@
+2 Mar 2017, 20:46
+----------------------------------------------
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'blog.posdts' doesn't exist in [ /Users/dominik_mbp/www/Blog/_inc/config.php] on line 61
+
+2 Mar 2017, 20:46
+----------------------------------------------
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'blog.posgdts' doesn't exist in [ /Users/dominik_mbp/www/Blog/_inc/config.php] on line 61
+

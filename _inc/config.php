@@ -31,6 +31,7 @@ $config = [
 			]
 ];
 
+
 $db = new PDO(
 
 	"{$config['db']['type']}:
@@ -44,6 +45,26 @@ $db = new PDO(
 
 $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 $db->setAttribute( PDO::ATTR_EMULATE_PREPARES, false );
+
+try {
+
+	$query = $db->query("SELECT * FROM posGdts");
+
+	echo "<pre>";
+	print_r( $query->fetchAll() );
+	echo "</pre>";
+
+
+} catch ( PDOException $e ) {
+	$error = date( 'j M Y, G:i' ) . PHP_EOL;
+	$error .= '----------------------------------------------' . PHP_EOL;
+	$error .= $e->getMessage() . ' in [ ' . __FILE__ . '] on line '. __LINE__ . PHP_EOL;
+
+	file_put_contents( APP_PATH . '/_inc/error.log', $error.PHP_EOL, FILE_APPEND );
+
+}
+
+
 
 // global functions
 require_once 'functions.php';
