@@ -19,15 +19,16 @@
 	/**
 	 * Get Item
 	 *
-	 * Tries to fetch a DB item based on $_GET['id']
+	 * Tries to fetch a DB post based on URI segnemt
 	 * Returns false if unable
 	 *
-	 * @return DB item or false
+	 * @param integer id of the post to get
+	 * @return DB post or false
 	 */
-	function get_item()
+	function get_item( $id = 0 )
 	{
 		// if we have no id, or if id is empty
-		if ( ! isset($_GET['id']) || empty($_GET['id']) ) {
+		if ( $id = segment(2) ) {
 			return false;
 		}
 

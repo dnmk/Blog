@@ -3,32 +3,37 @@
 	include_once '_inc/config.php';
 
 	$routes = [
-		'post',
-		'edit',
-		'delete',
+
+		'/' =>[
+			'GET' => 'home.php'
+		],
+
+		'/post' => [
+			'GET' => 'post.php',
+			'POST' => '_inc/post-add.php'
+		],
+
+		'/edit' => [
+			'GET' => 'edit.php',
+			'POST' => '_inc/post-edit.php'
+		],
+
+		'/delete' => [
+			'GET' => 'delete.php',
+			'POST' => '_inc/post-delete.php'
+		],
+
 	];
 
-	if ( ! in_array( segment(1), $routes ) ) {
+	$page = segment(1);
+	$method = $_SERVER[ 'REQUEST_METHOD' ];
 
+
+	if ( ! isset( $routes["/$page"][$method] ) ) {
 		show_404();
-
 	}
 
-	include_once '_partials/header.php';
+
+	require $routes["/$page"][$method];
 
 ?>
-
-	<div class="page-header">
-	  <h1 class="text-center">Blogger <small>Course project</small></h1>
-	</div>
-
-	<form id="add-form" class="col-sm-12" action="_inc/add-item.php" method="post">
-		<p class="form-group">
-			<textarea class="form-control" name="message" id="text" rows="10" placeholder="Put new post"></textarea>
-		</p>
-		<p class="form-group submit-button">
-			<input class="btn-sm btn-danger center-block" type="submit" value="Add post">
-		</p>
-	</form>
-
-<?php include_once '_partials/footer.php' ?>
