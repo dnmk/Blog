@@ -16,6 +16,9 @@
 	}
 
 
+
+
+
 	/**
 	 * Get Item
 	 *
@@ -46,6 +49,9 @@
 	}
 
 
+
+
+
 	/**
 	 * Is AJAX
 	 *
@@ -58,6 +64,9 @@
 		return ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
 			strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest' );
 	}
+
+
+
 
 
 	/**
@@ -75,6 +84,9 @@
 	}
 
 
+
+
+
 	/**
 	 * Get Parity
 	 *
@@ -88,6 +100,7 @@
 	{
 		return is_even($number) ? 'even' : 'odd';
 	}
+
 
 
 
@@ -111,6 +124,7 @@
 		return filter_var($base.$path, FILTER_SANITIZE_URL);
 
 	}
+
 
 
 
@@ -141,6 +155,17 @@
 	}
 
 
+
+
+
+	/**
+	 * Get segment
+	 *
+	 * From a url like http://example.com/edit/1
+	 *
+	 * @param    $index
+	 * @return   id
+	 */
 	function segment( $index )
 	{
 
@@ -150,6 +175,18 @@
 	}
 
 
+
+
+
+	/**
+	 * redirect
+	 *
+	 * It redirect you to different site
+	 *
+	 * @param   $page
+	 * @param   $status_code
+	 * @return  different site
+	 */
 	function redirect( $page, $status_code = 302 )
 	{
 
@@ -165,4 +202,25 @@
 
 		header("Location: $location", true, $status_code);
 		die();
+	}
+
+
+
+
+
+	/**
+	 * Catch error
+	 *
+	 * Capture errors to error.log
+	 * ! You can use only if you have = try...catch exception
+	 *
+	 * @param  string		$e		PDOException
+	 * @return string		        Capture Errors To File
+	 */
+	function get_error($e)
+	{
+		$error = date( 'j M Y, G:i' ) . PHP_EOL;
+		$error .= '----------------------------------------------' . PHP_EOL;
+		$error .= $e->getMessage() . ' in [ ' . __FILE__ . '] on line '. __LINE__ . PHP_EOL;
+		file_put_contents( APP_PATH . '/_inc/error.log', $error.PHP_EOL, FILE_APPEND );
 	}

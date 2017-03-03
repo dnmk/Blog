@@ -10,6 +10,8 @@
 
 		$results = [];
 
+		get_error($e);
+
 	}
 
 

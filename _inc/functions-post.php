@@ -133,6 +133,8 @@ function format_post( $post )
 	$post['date'] = date('Y-m-d', $post['timestamp']);
 
 	$post['teaser'] = word_limiter( $post['text'], 20 );
+
+
 	// return $post like object
 	return (object) $post;
 
