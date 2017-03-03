@@ -2,55 +2,68 @@
 
 	$results = get_posts();
 
-include_once '_partials/header.php'
+	try{
+
+		$results = get_posts();
+
+	}catch (PDOException $e){
+
+		$results = [];
+
+	}
+
+
+	include_once '_partials/header.php'
 
 
 ?>
 
-	<div class="page-header">
-		<h1 class="text-center">Dashboard</h1>
+<div class="page-header">
+	<h1 class="text-center">Dashboard</h1>
+	<?php if ( count( $results ) ) : foreach ($results as $post) : ?>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<article id="pos-<?= $post->id ?>" class="post">
+					<header class="post-header">
+						<h2>
+							<a href="<?= $post->link ?>">
+								<?= $post->title ?>
+							</a>
+						</h2>
 
-		<?php if ( count( $results ) ) : foreach ($results as $post) : ?>
+						<time datetime="<?= $post->date ?>">
+							<small> / <?= $post->time ?></small>
+						</time>
+					</header>
 
-				<div class="row">
-					<div class="col-sm-6 col-sm-offset-3">
-						<article id="pos-<?= $post->id ?>" class="post">
-							<header class="post-header">
-								<h2>
-									<a href="<?= BASE_URL ?>/post/<?= $post->id ?>/<?= plain( $post->slug ) ?>">
-										<?= plain($post->title) ?>
-									</a>
-								</h2>
-
-								<time datetime="<?= date( 'Y-m-d', strtotime( $post->created_at ) ) ?>">
-									<small> / <?= date('j M Y, G:i', strtotime( $post->created_at ) ) ?></small>
-								</time>
-							</header>
-
-							<div class="post-content">
-								<p>
-									<?= word_limiter(plain($post->text), 20) ?>
-								</p>
-							</div>
-
-							<div class="footer post-footer">
-								<a class="read-more" href="<?= BASE_URL ?>/post/<?= $post->id ?>/<?= plain( $post->slug ) ?>">
-									// read more >>
-								</a>
-							</div>
-						</article>
+					<div class="post-content">
+						<p>
+							<?= $post->teaser ?>
+						</p>
 					</div>
-				</div>
 
+					<div class="footer post-footer">
+						<a class="read-more" href="<?= $post->link ?>">
+							// read more >>
+						</a>
+					</div>
 
-		<?php endforeach; else: ?>
+					<div class="tags">
+						<p>
+							<?=  $post->tags ?>
+						</p>
+					</div>
 
-			<p>
-				We got nothing
-			</p>
+				</article>
+			</div>
+		</div>
+	<?php endforeach; else: ?>
 
+		<p>
+			I have nothing to show
+		</p>
 
-		<?php endif; ?>
+	<?php endif; ?>
 
 	</div>
 
