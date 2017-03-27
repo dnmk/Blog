@@ -32,6 +32,10 @@
 		<div class="container">
 			<?= $post->text  ?>
 		</div>
+
+		<div class="btn-group btn-group-sm pull-left">
+			<a href="<?= BASE_URL ?>" class="btn btn-default"> <-- Back </a>
+		</div>
     </div>
 
 <?php include_once "_partials/footer.php" ?>
