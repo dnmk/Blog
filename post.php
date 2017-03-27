@@ -20,7 +20,9 @@
 
 	}
 
-include_once "_partials/header.php";
+	$post_title = $post->title;
+
+	include_once "_partials/header.php";
 
 ?>
 
