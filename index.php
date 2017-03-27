@@ -36,4 +36,3 @@
 
 	require $routes["/$page"][$method];
 
-?>

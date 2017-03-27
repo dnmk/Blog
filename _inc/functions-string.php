@@ -13,6 +13,7 @@
  */
 function add_paragraphs( $str )
 {
+
 	// Trim whitespace
 	if (($str = trim($str)) === '') return '';
 
